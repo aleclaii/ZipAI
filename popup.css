@@ -1,0 +1,13 @@
+#big-button {
+    width: 150px;
+    height: 150px;
+    border-radius: 75px;
+    background-color: blue;
+    color: white;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+    display: block;
+    margin: 50px auto;
+  }
+  
