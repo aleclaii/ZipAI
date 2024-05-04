@@ -4,8 +4,6 @@ import requests
 from bs4 import BeautifulSoup
 from openai import OpenAI
 
-#Initialize FastAPI Server: uvicorn app:app --reload
-
 app = FastAPI()
 client = OpenAI(api_key="sk-proj-XgsBdcXW871PG9nq3XvUT3BlbkFJtDV6fJsIt9AXDt0baCQI")
 
