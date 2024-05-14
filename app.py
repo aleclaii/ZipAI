@@ -4,28 +4,30 @@ import requests
 from bs4 import BeautifulSoup
 from openai import OpenAI
 
+#Initialize FastAPI Server: uvicorn app:app --reload
+
 app = FastAPI()
 client = OpenAI(api_key="sk-proj-XgsBdcXW871PG9nq3XvUT3BlbkFJtDV6fJsIt9AXDt0baCQI")
 
-# Configure CORS middleware
+#CORS 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["chrome-extension://hngpbonhjphcpmnenffbjfgdnakolnfm"],  # Adjust with your extension ID
+    allow_origins=["chrome-extension://hngpbonhjphcpmnenffbjfgdnakolnfm"], 
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"]
 )
 
-# The rest of your FastAPI code goes here
+
 @app.post('/summarize')
 async def summarize(request: Request):
     data = await request.json()
     url = data['url']
     
-    # Extract page content
+    # WebScrape Script
     content = save_paragraphs_from_url(url)
     
-    # Send to OpenAI's GPT
+    # Call GPT API
     response = client.chat.completions.create(
     model="gpt-3.5-turbo-0125",
     messages=[

@@ -13,6 +13,6 @@ document.getElementById('big-button').addEventListener('click', async function()
     const data = await response.json();
     console.log("Summary from backend:", data.summary);
 
-    // Display the summary (optional)
+    // Display the summary 
     document.getElementById('summary').textContent = data.summary;
 });
